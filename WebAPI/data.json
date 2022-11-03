@@ -1,1 +1,1 @@
-{"Users":[{"Id":1,"UserName":"jula","Password":"12345","Email":"julcia@nwm.pl"}],"Posts":[]}
+{"Users":[{"Id":1,"UserName":"jula","Password":"12345","Email":"julcia@nwm.pl"}],"Posts":[{"Id":1,"Title":"tytul","Body":"","Creator":{"Id":1,"UserName":"jula","Password":"12345","Email":"julcia@nwm.pl"}},{"Id":2,"Title":"tytul","Body":"","Creator":{"Id":1,"UserName":"jula","Password":"12345","Email":"julcia@nwm.pl"}}]}

@@ -5,18 +5,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 
+
 [ApiController]
 [Route("[controller]")]
-
-public class UserController : ControllerBase
+public class UsersController : ControllerBase
 {
     private readonly IUserLogic _userLogic;
 
-    public UserController(IUserLogic userLogic)
+    public UsersController(IUserLogic userLogic)
     {
         _userLogic = userLogic;
     }
-
+    
     [HttpPost]
     public async Task<ActionResult<User>> CreateAsync(UserCreationDto dto)
     {
@@ -31,4 +31,20 @@ public class UserController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+    
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<User>>> GetAsync([FromQuery] string? username){
+        try
+        {
+            SearchParametersDto parametersDto = new(username);
+            IEnumerable<User> users = await _userLogic.GetAsync(parametersDto);
+            return Ok(users);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+    
 }
